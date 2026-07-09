@@ -1,0 +1,45 @@
+{
+  "name": "watchtogether",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:next": "next dev",
+    "dev:server": "node src/server/socket-server.js",
+    "dev": "concurrently \"npm run dev:next\" \"npm run dev:server\"",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "server": "node src/server/socket-server.js"
+  },
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "better-sqlite3": "^12.11.1",
+    "canvas-confetti": "^1.9.4",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "framer-motion": "^12.42.2",
+    "hls.js": "^1.6.16",
+    "lucide-react": "^1.23.0",
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^10.0.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "prisma": "^7.8.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

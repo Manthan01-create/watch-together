@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Room {
+  id               String    @id @default(uuid())
+  name             String
+  password         String?   // Hashed or cleartext for simplicity, we can hash it
+  isPublic         Boolean   @default(true)
+  hostId           String?   // Socket ID of current host
+  activeVideoUrl   String?
+  activeVideoType  String    @default("youtube") // youtube, vimeo, file, live, audio, pdf
+  videoPlaying     Boolean   @default(false)
+  videoTime        Float     @default(0.0)
+  pdfPage          Int       @default(1)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  messages         Message[]
+}
+
+model Message {
+  id          String   @id @default(uuid())
+  roomId      String
+  senderName  String
+  content     String
+  fileUrl     String?
+  fileName    String?
+  reactions   String?  // Serialized reactions (e.g. JSON string {"❤️": ["UserA"], "😂": ["UserB"]})
+  createdAt   DateTime @default(now())
+  room        Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+}
